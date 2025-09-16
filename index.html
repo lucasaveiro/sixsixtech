@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SixSix Technology — Plataforma de E‑commerce para Fretes Fracionados de Alto Custo</title>
+  <meta name="description" content="A SixSix Technology é pioneira em e‑commerce para empresas que precisam dividir pedidos em múltiplas entregas com fretes pesados e caros. Plataforma moderna, APIs, roteirização e otimização de custos em escala." />
+  <meta property="og:title" content="SixSix Technology — E‑commerce para fretes pesados e fracionados" />
+  <meta property="og:description" content="Divida pedidos grandes em múltiplas entregas, otimize frete e escale sua operação B2B e B2C com a SixSix." />
+  <meta name="theme-color" content="#0b1420" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1420;           /* Navy profundo */
+      --bg-2:#0f1c2a;         /* Navy secundário */
+      --surface:#101a26;      /* Cards */
+      --text:#e9eef5;
+      --muted:#a9b2c1;
+      --brand:#ff5a2a;        /* Laranja SixSix aproximado */
+      --brand-2:#ff7a53;      /* Gradiente */
+      --ok:#41dca0;
+      --warn:#ffd166;
+      --maxw:1200px;
+      --radius:20px;
+      --shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      color:var(--text);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:var(--text);text-decoration:none}
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+    /* Header */
+    header{
+      position:fixed;inset:0 0 auto 0;height:72px;z-index:50;
+      display:flex;align-items:center;
+      background:rgba(11,20,32,.55);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand svg{height:30px}
+    .brand-name{font-weight:800;letter-spacing:.3px;font-size:22px}
+    .badge{font-size:10px;color:var(--bg);background:var(--warn);padding:4px 8px;border-radius:999px;font-weight:700}
+    nav a{opacity:.8;margin-left:22px}
+    nav a:hover{opacity:1}
+    .cta{margin-left:18px;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:white;font-weight:700;box-shadow:var(--shadow)}
+    /* Hero */
+    .hero{position:relative;min-height:100svh;display:grid;place-items:center;padding-top:72px;overflow:hidden}
+    .hero .bg-orb{position:absolute;inset:auto -10% -30% -10%;height:110%;background:radial-gradient( 1200px 600px at 50% 110%, rgba(255,90,42,.18), transparent 60% );pointer-events:none}
+    .hero .grid{display:grid;gap:28px;grid-template-columns:1.2fr 1fr;align-items:center}
+    .kicker{color:var(--brand);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px}
+    h1{font-size:clamp(38px,6vw,74px);line-height:1.02;margin:6px 0 14px;font-weight:900}
+    .lead{font-size:clamp(16px,2.2vw,20px);color:var(--muted)}
+    .actions{display:flex;gap:14px;margin-top:14px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.12);padding:14px 18px;border-radius:14px}
+    .btn.primary{border-color:transparent;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;font-weight:800}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+    .hero-card h3{margin:0 0 8px}
+    .hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+    .metric{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.08);padding:14px;border-radius:16px;text-align:center}
+    .metric .num{font-weight:900;font-size:26px}
+    .metric .sub{color:var(--muted);font-size:12px}
+
+    /* Parallax sections */
+    section{padding:120px 0;position:relative}
+    .pinned{position:sticky;top:90px}
+    .section-title{font-size:clamp(26px,3.6vw,44px);line-height:1.1;margin:0 0 16px;font-weight:900}
+    .section-lead{color:var(--muted);font-size:18px;max-width:760px}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+
+    /* Feature chips */
+    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;border:1px dashed rgba(255,255,255,.2);opacity:.85}
+    .chip b{color:#fff}
+    .stack{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Showcase images (placeholders) */
+    .mock{height:360px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:
+      radial-gradient(1000px 400px at 80% -10%, rgba(255,90,42,.25), transparent 40%),
+      linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+    }
+
+    /* Logos / identity */
+    .logo{
+      display:inline-flex;align-items:center;gap:14px;font-weight:900;color:white
+    }
+    .logo svg{height:42px}
+    .logo small{letter-spacing:.38em;opacity:.9;font-weight:700}
+
+    /* Pricing / CTA */
+    .pricing{display:grid;grid-template-columns:2fr 1fr;gap:22px}
+    .tier{padding:28px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))}
+    .price{font-size:34px;font-weight:900}
+    .note{color:var(--muted);font-size:14px}
+
+    /* Footer */
+    footer{padding:70px 0;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.18)}
+    .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}
+    .legal{opacity:.6;font-size:12px;margin-top:10px}
+
+    /* Parallax elements */
+    [data-parallax]{will-change:transform;transition:transform .05s linear}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .grid, .grid-3, .grid-2, .pricing, .foot{grid-template-columns:1fr}
+      .pinned{position:relative;top:0}
+      header{height:auto}
+      .cta{margin-left:10px}
+      .mock{height:260px}
+      section{padding:80px 0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Inline SVG logo (use assets/logo.png se preferir) -->
+        <svg viewBox="0 0 512 128" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="SixSix logo">
+          <path d="M48 86c30 8 64 3 64-23 0-34-72-16-72-48C40 2 73-3 96 4" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+          <path d="M170 88c0-24 49-17 49-43 0-21-41-22-49-10" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+          <path d="M260 88c0-24 49-17 49-43 0-21-41-22-49-10" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+          <circle cx="360" cy="64" r="8" fill="var(--brand)"/>
+          <circle cx="408" cy="64" r="8" fill="var(--brand)"/>
+        </svg>
+        <div class="brand-name">SixSix <span style="font-weight:600;color:var(--muted)">Technology</span></div>
+        <span class="badge">Pioneiros</span>
+      </div>
+      <nav>
+        <a href="#plataforma">Plataforma</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#mercados">Mercados</a>
+        <a href="#contato" class="cta">Solicitar demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Abertura">
+    <div class="bg-orb" aria-hidden="true"></div>
+    <div class="container grid">
+      <div>
+        <div class="kicker">E‑commerce para fretes pesados e fracionados</div>
+        <h1 data-parallax data-speed=".25">Vendas grandes, entregas inteligentes.</h1>
+        <p class="lead">A <b>SixSix Technology</b> resolve o gargalo de empresas que recebem pedidos maiores que um único frete. Dividimos o pedido em múltiplas entregas ideais, <b>reduzimos custo logístico</b> e mantemos a <b>experiência premium</b> de compra.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contato">Agendar demonstração</a>
+          <a class="btn" href="#plataforma">Ver plataforma</a>
+        </div>
+        <div class="stack" style="margin-top:18px">
+          <span class="chip">⚡ <b>APIs</b> e SDKs</span>
+          <span class="chip">🧭 Roteirização</span>
+          <span class="chip">📦 Picking & Split</span>
+          <span class="chip">📊 Analytics</span>
+        </div>
+      </div>
+      <div class="hero-card" data-parallax data-speed="-.15">
+        <h3>Impacto imediato</h3>
+        <div class="hero-metrics">
+          <div class="metric"><div class="num">-28%</div><div class="sub">custo de frete médio</div></div>
+          <div class="metric"><div class="num">+32%</div><div class="sub">conversão no checkout</div></div>
+          <div class="metric"><div class="num">99,6%</div><div class="sub">SLA de entrega</div></div>
+        </div>
+        <p class="note" style="margin-top:10px">*Resultados típicos em operações com alto custo de transporte e itens volumosos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATAFORMA -->
+  <section id="plataforma">
+    <div class="container">
+      <div class="pinned">
+        <h2 class="section-title">A plataforma que entende pedidos maiores do que um frete.</h2>
+        <p class="section-lead">Construída para <b>operações complexas</b>: B2B e B2C com produtos pesados, volumosos e ticket alto. Somos o motor por trás de lojas que precisam fracionar o pedido em <b>múltiplas entregas otimizadas</b> sem complicar o checkout.</p>
+      </div>
+      <div class="grid-3" style="margin-top:28px">
+        <div class="card" data-parallax data-speed=".1">
+          <h3>Split Engine</h3>
+          <p>Algoritmos de <b>fracionamento</b> que consideram dimensões, peso, SLAs, restrições de transportadora e custo total. Respeitamos picking por armazém e geração de etiquetas/lotes.</p>
+        </div>
+        <div class="card" data-parallax data-speed=".18">
+          <h3>Frete Ótimo</h3>
+          <p>Simulação em tempo real com <b>tarifas contratuais</b>, consolidação de rotas e escolha de melhor composição entre múltiplas transportadoras.</p>
+        </div>
+        <div class="card" data-parallax data-speed=".25">
+          <h3>Checkout Apple‑like</h3>
+          <p>UX de alto nível com comparação de opções de entrega por pacote, data prometida e transparência de custos — sem surpresas para o cliente.</p>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:22px">
+        <div class="mock" aria-label="Mockup da UI" data-parallax data-speed="-.08"></div>
+        <div class="card" data-parallax data-speed=".12">
+          <h3>Integrações e APIs</h3>
+          <p>REST e Webhooks; SDKs para JS/Node e Python; conectores com OMS, WMS, ERPs e marketplaces. 
+          <br/><br/><span class="stack"><span class="chip">Shopify / VTEX</span><span class="chip">Magento</span><span class="chip">Tiny / Bling</span><span class="chip">SAP / TOTVS</span></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="como-funciona">
+    <div class="container">
+      <h2 class="section-title">Como funciona</h2>
+      <p class="section-lead">Do carrinho à entrega: o pedido é fracionado, tarifado, roteirizado e monitorado. Tudo de forma automática.</p>
+      <div class="grid-4 grid-3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px">
+        <div class="card" data-parallax data-speed=".16"><b>1) Detecção</b><br><span class="muted">Identificamos quando um pedido excede a capacidade de um único frete.</span></div>
+        <div class="card" data-parallax data-speed=".1"><b>2) Split Ótimo</b><br><span class="muted">Geramos conjuntos de pacotes com melhor custo/tempo.</span></div>
+        <div class="card" data-parallax data-speed=".04"><b>3) Checkout</b><br><span class="muted">Exibimos opções claras por grupo de entrega e valor total.</span></div>
+        <div class="card" data-parallax data-speed="-.02"><b>4) Execução</b><br><span class="muted">Emissão de etiquetas, WMS, tracking unificado e pós‑venda.</span></div>
+      </div>
+      <div class="grid-2" style="margin-top:26px">
+        <div class="card"><h3>Resultados esperados</h3>
+          <ul>
+            <li>Economia de frete em <b>10–35%</b> por pedido.</li>
+            <li>Queda em carrinhos abandonados ao dar <b>datas prometidas</b>.</li>
+            <li>Menos exceções no picking e menor ruptura de SLA.</li>
+          </ul>
+        </div>
+        <div class="card"><h3>Segurança & Confiabilidade</h3>
+          <ul>
+            <li>Single‑tenant por cliente ou multi‑tenant com isolamento.</li>
+            <li>LGPD, logs e trilhas de auditoria.</li>
+            <li>99,9% uptime, SSO e RBAC.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MERCADOS -->
+  <section id="mercados">
+    <div class="container">
+      <h2 class="section-title">Mercado bilionário, dor real.</h2>
+      <p class="section-lead">Atendemos indústrias com alto custo de transporte e itens de grande volume. Pioneirismo em <b>frete fracionado orientado a e‑commerce</b>.</p>
+      <div class="grid-3" style="margin-top:24px">
+        <div class="card" data-parallax data-speed=".18"><b>Construção & Home Center</b><br><span class="muted">Pisos, porcelanatos, cimento, tintas, portas e janelas.</span></div>
+        <div class="card" data-parallax data-speed=".12"><b>Máquinas & Equipamentos</b><br><span class="muted">Ferramentas, compressores, peças pesadas.</span></div>
+        <div class="card" data-parallax data-speed=".06"><b>Móveis & Decoração</b><br><span class="muted">Sofás, colchões, cozinhas planejadas.</span></div>
+        <div class="card" data-parallax data-speed=".02"><b>Autopeças & Pneus</b><br><span class="muted">Volumes pesados e restrições de transporte.</span></div>
+        <div class="card" data-parallax data-speed="-.04"><b>Materiais Elétricos</b><br><span class="muted">Cabos, estruturas, geradores.</span></div>
+        <div class="card" data-parallax data-speed="-.1"><b>B2B sob medida</b><br><span class="muted">Qualquer operação que precisa dividir pedidos em múltiplas entregas.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL / CASES -->
+  <section>
+    <div class="container">
+      <div class="grid-2">
+        <div class="card" data-parallax data-speed=".08">
+          <h3>Por que SixSix?</h3>
+          <p>Porque fomos os primeiros a transformar <b>split de pedido</b> em vantagem competitiva. Combinamos expertise logística com software de altíssima qualidade para reduzir custos e elevar a experiência de compra.</p>
+          <div class="stack">
+            <span class="chip">⏱ Lead time previsível</span>
+            <span class="chip">🔗 Orquestração de transportadoras</span>
+            <span class="chip">🧩 SDKs e APIs</span>
+          </div>
+        </div>
+        <div class="mock" data-parallax data-speed="-.06" aria-label="Tela de analytics"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTATO -->
+  <section id="contato">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2 class="section-title">Pronto para vender mais com frete inteligente?</h2>
+          <p class="section-lead">Solicite uma demonstração da plataforma. Em poucos dias já é possível medir impacto em custos e conversão.</p>
+          <div class="stack" style="margin:18px 0">
+            <span class="chip">Tempo de implantação típico: <b>2–6 semanas</b></span>
+            <span class="chip">Suporte técnico em português</span>
+          </div>
+        </div>
+        <div class="card">
+          <form id="lead" action="https://formsubmit.co" method="POST">
+            <!-- Dica: substitua por sua automação (HubSpot, RD, etc.) -->
+            <input type="hidden" name="_next" value="/obrigado.html" />
+            <div style="display:grid;gap:10px">
+              <label>Nome
+                <input name="nome" required class="i" placeholder="Seu nome" />
+              </label>
+              <label>Empresa
+                <input name="empresa" required class="i" placeholder="Nome da empresa" />
+              </label>
+              <label>E‑mail
+                <input name="email" type="email" required class="i" placeholder="seu@email.com" />
+              </label>
+              <label>Mensagem
+                <textarea name="mensagem" rows="4" class="i" placeholder="Conte brevemente sua operação"></textarea>
+              </label>
+              <button class="btn primary" type="submit">Quero uma demo</button>
+              <small class="note">Ao enviar você concorda com nossa política de privacidade.</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo">
+          <svg viewBox="0 0 512 128" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M48 86c30 8 64 3 64-23 0-34-72-16-72-48C40 2 73-3 96 4" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+            <path d="M170 88c0-24 49-17 49-43 0-21-41-22-49-10" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+            <path d="M260 88c0-24 49-17 49-43 0-21-41-22-49-10" stroke="var(--brand)" stroke-width="16" stroke-linecap="round"/>
+            <circle cx="360" cy="64" r="8" fill="var(--brand)"/>
+            <circle cx="408" cy="64" r="8" fill="var(--brand)"/>
+          </svg>
+          <div>
+            <div style="font-weight:900">SixSix Technology</div>
+            <div class="legal">© <span id="y"></span> SixSix. Todos os direitos reservados.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <b>Produto</b>
+        <ul style="list-style:none;padding:0;margin:10px 0;opacity:.85;line-height:1.9">
+          <li><a href="#plataforma">Plataforma</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#mercados">Mercados</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Contato</b>
+        <ul style="list-style:none;padding:0;margin:10px 0;opacity:.85;line-height:1.9">
+          <li><a href="#contato">Solicitar demo</a></li>
+          <li><a href="mailto:contato@sixsix.tech">contato@sixsix.tech</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Inputs estilizados */
+    .i{width:100%;margin-top:6px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);padding:12px 14px;color:var(--text);outline:none}
+    .i:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(255,90,42,.25)}
+  </style>
+
+  <script>
+    // Parallax sutil, estilo Apple‑like (suave, sem jitter)
+    (function(){
+      const els=[...document.querySelectorAll('[data-parallax]')];
+      const speed=(el)=>parseFloat(el.getAttribute('data-speed')||0.1);
+      let scrollY=window.scrollY, ticking=false;
+      function onScroll(){scrollY=window.scrollY; if(!ticking){ requestAnimationFrame(update); ticking=true; }}
+      function update(){
+        const h=window.innerHeight;
+        els.forEach(el=>{
+          const r=el.getBoundingClientRect();
+          const visible = r.top < h && r.bottom > 0;
+          if(!visible) return;
+          const p = (r.top - h/2)/h; // posição relativa no viewport
+          const t = p * -60 * speed(el); // deslocamento suave
+          el.style.transform = `translate3d(0, ${t.toFixed(2)}px, 0)`;
+        });
+        ticking=false;
+      }
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', update);
+      update();
+
+      // Fade in / reveal com IntersectionObserver
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){ e.target.style.transition='opacity .8s ease, transform .8s ease'; e.target.style.opacity=1; e.target.style.transform+=' translateZ(0)'; }
+        });
+      }, {threshold:.1});
+      document.querySelectorAll('.card,.mock,.section-title,h1,.metric').forEach(el=>{ el.style.opacity=.001; io.observe(el); });
+
+      // Ano no rodapé
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
